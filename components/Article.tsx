@@ -28,7 +28,7 @@ const Article: FC<Props> = ({ article }) => {
           <div className="flex items-center gap-3">
             {article?.category && (
               <Link href={`/category/${article?.category?.slug}`}>
-                <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
+                <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
                   {article?.category?.name}
                 </div>
               </Link>
@@ -40,7 +40,7 @@ const Article: FC<Props> = ({ article }) => {
             />
           </div>
           <Link href={`/${article?.slug}`}>
-            <h1 className="text-3xl text-neutral-500 hover:text-primary hover:underline hover:underline-offset-2 font-bold cursor-pointer transition-all mt-2">
+            <h1 className="text-[1.8rem] lg:text-3xl text-neutral-500 hover:text-primary hover:underline hover:underline-offset-2 font-bold cursor-pointer transition-all leading-snug mt-2">
               {article?.title}
             </h1>
           </Link>
