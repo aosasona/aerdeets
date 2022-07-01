@@ -81,10 +81,10 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
       <button
         name="floating-button"
         type="button"
-        className="fixed bg-primary bottom-5 right-5 drop-shadow-md p-3 z-[99]"
+        className="fixed bg-primary bottom-5 right-5 drop-shadow-md p-4 z-[99]"
         onClick={() => setIsOpen(true)}
       >
-        <HiMenuAlt3 size={24} className="" />
+        <HiMenuAlt3 size={24} className="text-neutral-900" />
       </button>
     </>
   );
