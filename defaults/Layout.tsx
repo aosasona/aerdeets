@@ -5,6 +5,7 @@ import Meta from "./Meta";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Menu from "@/components/Menu";
+import Footer from "@/components/Footer";
 
 interface Props {
   children: ReactNode;
@@ -23,7 +24,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
   return (
     <>
       <Meta title={title} desc={desc} keywords={keywords} />
-      <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#0E0E0E]">
+      <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#0E0E0E] z-[99]">
         <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:py-5">
           <div className="flex items-center gap-x-2 lg:gap-x-3">
             <img src="/img/logo.svg" alt="logo" className="h-6 lg:h-8" />
@@ -36,7 +37,10 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
           />
         </div>
       </nav>
-      <main className="w-[92%] lg:w-4/5 mx-auto mt-[11vh]">{children}</main>
+      <main className="w-[92%] lg:w-4/5 mx-auto mt-[12vh] lg:mt-[11vh]">
+        {children}
+        <Footer />
+      </main>
 
       <AnimatePresence>
         {isOpen && (
