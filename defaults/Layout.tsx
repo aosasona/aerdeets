@@ -23,8 +23,8 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
   return (
     <>
       <Meta title={title} desc={desc} keywords={keywords} />
-      <nav className="fixed top-0 w-screen border-b-[1px] border-b-[#0D0D0D]">
-        <div className="w-full flex items-center justify-between bg-black px-5 py-4 lg:py-5">
+      <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#0E0E0E]">
+        <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:py-5">
           <div className="flex items-center gap-x-2 lg:gap-x-3">
             <img src="/img/logo.svg" alt="logo" className="h-6 lg:h-8" />
             {/* <h2 className="text-2xl font-medium">aerdeets</h2> */}

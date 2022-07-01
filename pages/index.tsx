@@ -24,7 +24,7 @@ const Home: NextPage<any> = ({ articles }) => {
                 className="w-full aspect-video object-cover rounded-xl"
               />
               <Link href={`/${article?.slug}`}>
-                <h1 className="text-3xl text-neutral-500 hover:text-primary font-semibold transition-all px-1">
+                <h1 className="text-3xl text-neutral-500 hover:text-primary hover:underline hover:underline-offset-2 font-semibold transition-all px-1">
                   {article?.title}
                 </h1>
               </Link>
