@@ -40,8 +40,16 @@ const Menu: FC<Props> = ({ onClose }) => {
               </div>
             ))}
           </div>
-          <h5 className="text-neutral-500 text-center text-xs tracking-wider py-4">
-            Built by <a href="https://twitter.com/trulyao">Ayodeji</a>
+          <h5 className="text-neutral-500 text-center text-xs tracking-wider pt-2 pb-4">
+            Built by{" "}
+            <a
+              href="https://twitter.com/trulyao"
+              target="_blank"
+              rel="noreferrer"
+              className="text-neutral-400"
+            >
+              Ayodeji
+            </a>
           </h5>
         </>
       )}
