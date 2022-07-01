@@ -27,7 +27,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
         <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:py-5">
           <div className="flex items-center gap-x-2 lg:gap-x-3">
             <img src="/img/logo.svg" alt="logo" className="h-6 lg:h-8" />
-            {/* <h2 className="text-2xl font-medium">aerdeets</h2> */}
+            <h2 className="text-3xl font-medium">aerdeets</h2>
           </div>
           <HiMenuAlt3
             size={24}
@@ -54,7 +54,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
               initial={{ opacity: 0, y: 400 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 400 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+              transition={{ duration: 0.3, delay: 0.02 }}
               className="fixed lg:hidden bottom-0 mx-auto w-full lg:w-3/6 left-0 right-0 bg-dark drop-shadow-md px-5 py-4 z-[999]"
             >
               <Menu onClose={onClose} />
@@ -64,7 +64,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
               initial={{ opacity: 0, y: -400 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -400 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.3, delay: 0.02 }}
               className="fixed hidden lg:block top-0 bottom-auto mx-auto w-full lg:w-3/6 left-0 right-0 bg-dark drop-shadow-md px-5 py-4 z-[999]"
             >
               <Menu onClose={onClose} />
