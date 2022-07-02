@@ -8,7 +8,9 @@ const GlobalContext = createContext<any>(null);
 const { Provider } = GlobalContext;
 
 const GlobalProvider: FC<any> = ({ children }) => {
+  // Initial state
   const initialState = {
+    articles: [],
     categories: [],
     categories_loading: true,
   };

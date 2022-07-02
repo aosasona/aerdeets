@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import type { FC } from "react";
 import Link from "next/link";
 import { GlobalContext } from "@/context/GlobalContext";
 import { BsX } from "react-icons/bs";
+import { FiSearch } from "react-icons/fi";
 import Loader from "./Loader";
 import { ICategories } from "@/utils/types.util";
 
@@ -13,10 +14,12 @@ interface Props {
 const Menu: FC<Props> = ({ onClose }) => {
   const { state } = useContext(GlobalContext);
 
+  const [search, setSearch] = useState("");
+
   return (
     <>
       <div className="flex items-center justify-between border-b-[1px] border-b-neutral-800 pb-4 px-1">
-        <h2 className="text-primary font-medium text-xl">Menu</h2>
+        <h2 className="text-primary font-bold text-xl">Menu</h2>
         <BsX
           size={23}
           onClick={onClose}
@@ -30,6 +33,22 @@ const Menu: FC<Props> = ({ onClose }) => {
       ) : (
         <>
           <div className="grid grid-cols-3 xl:grid-cols-4 gap-y-8 gap-x-3 lg:gap-y-7 py-8 px-1">
+            <form
+              action="/search"
+              className="w-full flex col-span-3 xl:col-span-4"
+            >
+              <input
+                type="search"
+                name="q"
+                placeholder="What are you looking for?"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full bg-neutral-900 text-base text-primary focus:outline-none placeholder-neutral-700 px-3"
+              />
+              <button className="bg-primary text-neutral-900 hover:bg-secondary focus:bg-secondary p-3 transition-all">
+                <FiSearch size={20} />
+              </button>
+            </form>
             {state.categories.map((category: ICategories, index: number) => (
               <div key={index} className="px-3 lg:px-4">
                 <p className="text-neutral-300 hover:text-primary hover:underline hover:underline-offset-4 transition-all">

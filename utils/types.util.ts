@@ -4,6 +4,7 @@ export interface ICategories {
 }
 
 export interface IState {
+  articles: IArticle[];
   categories: ICategories[];
   categories_loading: boolean;
 }
@@ -24,5 +25,6 @@ export interface IArticle {
   image: {
     url: string;
   };
+  featured: boolean;
   createdAt: string;
 }

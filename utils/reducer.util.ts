@@ -2,6 +2,7 @@ import { IAction, IState } from "./types.util";
 
 const cases = {
   SET_CATEGORIES: "SET_CATEGORIES",
+  SET_ARTICLES: "SET_ARTICLES",
 };
 
 const reducer = (state: IState, action: IAction) => {
@@ -11,6 +12,11 @@ const reducer = (state: IState, action: IAction) => {
         ...state,
         categories: action.payload,
         categories_loading: false,
+      };
+    case cases.SET_ARTICLES:
+      return {
+        ...state,
+        articles: action.payload,
       };
     default:
       return state;
