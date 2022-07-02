@@ -27,8 +27,8 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
       <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#0E0E0E] z-[99]">
         <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:px-8 lg:py-5">
           <div className="flex items-center gap-x-2 lg:gap-x-3">
-            <img src="/img/logo.svg" alt="logo" className="h-6 lg:h-8" />
-            <h2 className="text-3xl font-medium">aerdeets</h2>
+            <img src="/img/logo_green.svg" alt="logo" className="h-6 lg:h-8" />
+            <h2 className="text-2xl lg:text-3xl font-medium">aerdeets</h2>
           </div>
           <HiMenuAlt3
             size={24}
@@ -37,7 +37,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
           />
         </div>
       </nav>
-      <main className="w-[92%] lg:w-4/5 mx-auto mt-[12vh] lg:mt-[11vh]">
+      <main className="w-[92%] lg:w-4/5 mx-auto mt-[11vh] lg:mt-[11vh]">
         {children}
         <Footer />
       </main>

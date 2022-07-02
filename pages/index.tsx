@@ -13,6 +13,7 @@ import { GlobalContext } from "@/context/GlobalContext";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import FeaturedCard from "@/components/FeaturedCard";
+import CategoryTitle from "@/components/CategoryTitle";
 
 interface Props {
   articles: IArticle[];
@@ -31,6 +32,8 @@ const Home: NextPage<any> = ({ articles, featured }) => {
 
   return (
     <Layout title="Home">
+      {/* SECTION TITLE */}
+      {/* <CategoryTitle>Featured</CategoryTitle> */}
       {featured.length > 0 && (
         <Carousel
           autoPlay={true}
@@ -46,6 +49,7 @@ const Home: NextPage<any> = ({ articles, featured }) => {
           ))}
         </Carousel>
       )}
+
       {articles?.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {articles.map((article: IArticle, index: number) => (
