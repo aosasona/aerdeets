@@ -24,6 +24,8 @@ interface Props {
 const Search: NextPage<Props> = ({ articles, searchQuery }) => {
   const router = useRouter();
 
+  // TODO: USE CACHE DATA FROM CONTEXT IF AVAILABLE
+
   const [query, setQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(
