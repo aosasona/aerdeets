@@ -45,7 +45,7 @@ const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
   return (
     <Layout title={category_name}>
       <h1 className="text-3xl font-bold text-neutral-700">{category_name}</h1>
-      <Back>Home</Back>
+      <Back>Back</Back>
 
       {/* FEATURED */}
       {featured?.length > 0 && (

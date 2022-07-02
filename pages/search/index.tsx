@@ -80,7 +80,7 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
       </form>
 
       {/* BACK */}
-      <Back>Home</Back>
+      <Back>Back</Back>
 
       {/* SEARCH RESULTS */}
       {articles?.length > 0 ? (

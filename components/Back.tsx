@@ -9,9 +9,10 @@ interface Props {
 
 const Back: FC<Props> = ({ children }) => {
   const router = useRouter();
+
   return (
     <button
-      onClick={() => router.push("/")}
+      onClick={() => router.back()}
       className="flex text-primary text-sm hover:text-secondary items-center font-semibold gap-1 my-4"
     >
       <FiChevronLeft />
