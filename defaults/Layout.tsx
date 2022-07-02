@@ -24,7 +24,7 @@ const Layout: FC<Props> = ({ children, title, desc, keywords }) => {
   return (
     <>
       <Meta title={title} desc={desc} keywords={keywords} />
-      <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#0E0E0E] z-[99]">
+      <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#121212] z-[99]">
         <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:px-8 lg:py-5">
           <div className="flex items-center gap-x-2 lg:gap-x-3">
             <img src="/img/logo_green.svg" alt="logo" className="h-6 lg:h-8" />
