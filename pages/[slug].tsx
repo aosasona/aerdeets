@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { gql } from "graphql-request";
@@ -25,12 +25,21 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
 
   const [share, setShare] = useState<boolean>(false);
 
+  // Disable scrolling on body when share is open
+  useEffect(() => {
+    if (share) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [share]);
+
   return (
     <Layout
       title={article?.title}
       desc={article?.description || article?.content.html}
       keywords={article?.keywords || ""}
-      image={article?.image?.url}
+      image={article?.image?.url || "/img/default.jpg"}
     >
       <main className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6">
         {/* CONTENT */}
@@ -67,7 +76,11 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
               >
                 <FiShare size={16} />
               </button>
-              <ShareBubble article={article} visible={share} />
+              <ShareBubble
+                article={article}
+                visible={share}
+                setVisible={setShare}
+              />
             </div>
           </div>
 
