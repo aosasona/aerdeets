@@ -158,7 +158,7 @@ export async function getStaticProps() {
       articles: data?.articles,
       featured: featured,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
 
