@@ -52,27 +52,40 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
             <p>Back</p>
           </button>
 
-          {/* CATEGORY AND DATE */}
+          {/* AUTHOR, CATEGORY AND DATE */}
           <div className="flex items-center justify-between my-5">
-            <div className="flex items-center gap-3">
-              {article?.category && (
-                <Link href={`/category/${article?.category?.slug}`}>
-                  <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
-                    {article?.category?.name}
-                  </div>
-                </Link>
-              )}
-              <Moment
-                date={article?.createdAt}
-                format="D MMMM YYYY"
-                className="text-neutral-600 text-xs font-semibold lg:text-sm"
+            <div className="flex items-center gap-x-2">
+              <img
+                src={article?.createdBy?.picture || "/img/default.jpg"}
+                alt={article?.createdBy?.name || ""}
+                className="w-[3.1rem] aspect-square rounded-full border-[3px] border-primary"
               />
+              <div className="flex flex-col gap-1">
+                <p className="text-neutral-300 text-sm font-medium">
+                  {article?.createdBy?.name || ""}
+                </p>
+                <div className="flex items-center gap-3">
+                  {article?.category && (
+                    <Link href={`/category/${article?.category?.slug}`}>
+                      <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-[11px] font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 pt-[2px]">
+                        {article?.category?.name}
+                      </div>
+                    </Link>
+                  )}
+                  <Moment
+                    date={article?.createdAt}
+                    format="D MMMM YYYY"
+                    className="text-neutral-600 text-xs font-semibold "
+                  />
+                </div>
+              </div>
             </div>
 
+            {/* SHARE */}
             <div className="h-max relative">
               <button
                 onClick={() => setShare(!share)}
-                className="text-neutral-300 hover:text-primary transition-all p-2"
+                className="text-neutral-300 hover:text-primary share-cta transition-all p-2"
               >
                 <FiShare size={16} />
               </button>
@@ -96,7 +109,7 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
             className="w-full aspect-video object-cover rounded-xl"
           />
 
-          <div className="article-body text-neutral-300 mt-6">
+          <div className="article-body text-neutral-300 mt-4">
             {parse(article?.content?.html || "")}
           </div>
         </section>
@@ -167,6 +180,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
             }
             image {
               url
+            }
+            createdBy {
+                name
+                picture
             }
             keywords
             featured

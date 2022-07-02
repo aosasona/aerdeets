@@ -25,6 +25,10 @@ export interface IArticle {
   image: {
     url: string;
   };
+  createdBy: {
+    name: string;
+    picture: string;
+  };
   featured: boolean;
   keywords?: string;
   createdAt: string;
