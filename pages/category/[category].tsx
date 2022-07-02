@@ -48,7 +48,7 @@ const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
       <Back>Back</Back>
 
       {/* FEATURED */}
-      {featured?.length > 0 && (
+      {/* {featured?.length > 0 && (
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -62,7 +62,7 @@ const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
             <FeaturedCard article={article} key={index} />
           ))}
         </Carousel>
-      )}
+      )} */}
 
       {/* ARTICLES */}
       {articles?.length > 0 ? (
