@@ -70,7 +70,7 @@ const Footer: FC = () => {
           </form>
         </div>
         <p className="text-dark text-xs text-opacity-80">
-          Get frequent updates on new articles, invites, and more. We promise we
+          Get updates on new articles, invites, and more. We promise we
           won&apos;t spam you.
         </p>
       </div>

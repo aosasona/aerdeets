@@ -41,7 +41,8 @@ const Meta: FunctionComponent<Props> = ({ title, desc, keywords, image }) => {
 
 Meta.defaultProps = {
   title: "AerDeets",
-  keywords: "aerdeets, tech, blog, ayodeji, osasona",
+  keywords:
+    "aerdeets, tech, blog, ayodeji, osasona, space, web3, coding, javascript, python, deets, aer",
   desc: "All things tech!",
   image: "/img/preview.jpg",
 };

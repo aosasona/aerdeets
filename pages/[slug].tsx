@@ -11,7 +11,6 @@ import { FiChevronLeft, FiShare } from "react-icons/fi";
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 import parse from "html-react-parser";
-import FeaturedCard from "@/components/FeaturedCard";
 import RecommendedCard from "@/components/RecommendedCard";
 import ShareBubble from "@/components/ShareBubble";
 
