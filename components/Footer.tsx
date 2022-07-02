@@ -45,7 +45,7 @@ const Footer: FC = () => {
 
   return (
     <>
-      <div className="w-full lg:w-3/6 mx-auto bg-primary pt-5 pb-6 px-5 mt-6">
+      <div className="w-full lg:w-3/6 mx-auto bg-primary pt-5 pb-6 px-5 mt-8">
         <h1 className="text-dark font-bold text-3xl lg:text-4xl w-5/6">
           Subscribe To Our Newsletter
         </h1>

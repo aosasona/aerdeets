@@ -10,13 +10,17 @@ import { IArticle } from "@/utils/types.util";
 import Article from "@/components/Article";
 import { PAGE_LIMIT } from "config/article.config";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import Back from "@/components/Back";
+import { Carousel } from "react-responsive-carousel";
+import FeaturedCard from "@/components/FeaturedCard";
 
 interface Props {
   articles: IArticle[];
+  featured: IArticle[];
   category_name: string;
 }
 
-const Category: NextPage<Props> = ({ articles, category_name }) => {
+const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(
@@ -41,13 +45,26 @@ const Category: NextPage<Props> = ({ articles, category_name }) => {
   return (
     <Layout title={category_name}>
       <h1 className="text-3xl font-bold text-neutral-700">{category_name}</h1>
-      <button
-        onClick={() => router.push("/")}
-        className="flex text-primary text-sm hover:text-secondary items-center font-semibold gap-1 my-4"
-      >
-        <FiChevronLeft />
-        <p>Home</p>
-      </button>
+      <Back>Home</Back>
+
+      {/* FEATURED */}
+      {featured.length > 0 && (
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+          showArrows={false}
+          showStatus={false}
+          showThumbs={false}
+          interval={5000}
+          className="py-1 mb-4"
+        >
+          {featured.map((article: IArticle, index: number) => (
+            <FeaturedCard article={article} key={index} />
+          ))}
+        </Carousel>
+      )}
+
+      {/* ARTICLES */}
       {articles?.length > 0 ? (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-8">
@@ -152,9 +169,16 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const { articles } = await graphqlClient.request(query);
 
+  let featured: IArticle[] = [];
+
+  if (articles?.length > 0) {
+    featured = articles.filter((article: IArticle) => article.featured);
+  }
+
   return {
     props: {
       articles,
+      featured,
       category_name:
         category.split("-").join(" ").charAt(0).toUpperCase() +
         category.split("-").join(" ").slice(1),

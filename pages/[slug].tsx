@@ -13,13 +13,14 @@ import Moment from "react-moment";
 import parse from "html-react-parser";
 import RecommendedCard from "@/components/RecommendedCard";
 import ShareBubble from "@/components/ShareBubble";
+import Back from "@/components/Back";
 
 interface Props {
   article: IArticle;
   recommended: IArticle[];
 }
 
-const Article: NextPage<Props> = ({ article, recommended }) => {
+const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
   const router = useRouter();
 
   const [share, setShare] = useState<boolean>(false);
@@ -43,13 +44,7 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
       <main className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6">
         {/* CONTENT */}
         <section className="lg:col-span-8">
-          <button
-            onClick={() => router.push("/")}
-            className="flex text-primary text-sm hover:text-secondary items-center font-semibold gap-1"
-          >
-            <FiChevronLeft />
-            <p>Back</p>
-          </button>
+          <Back>Back</Back>
 
           {/* AUTHOR, CATEGORY AND DATE */}
           <div className="flex items-center justify-between my-5">
@@ -220,4 +215,4 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   };
 };
 
-export default Article;
+export default ArticlePage;
