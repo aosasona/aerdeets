@@ -20,7 +20,7 @@ const Article: FC<Props> = ({ article }) => {
         className="flex flex-col gap-4 py-1"
       >
         <img
-          src={article?.image?.url}
+          src={article?.image?.url || "/img/default.jpg"}
           alt={article?.title || ""}
           className="w-full aspect-video object-cover rounded-xl"
         />
@@ -40,7 +40,7 @@ const Article: FC<Props> = ({ article }) => {
             />
           </div>
           <Link href={`/${article?.slug}`}>
-            <h1 className="text-[1.8rem] lg:text-3xl text-neutral-500 hover:text-primary hover:underline hover:underline-offset-2 font-bold cursor-pointer transition-all leading-snug mt-2">
+            <h1 className="text-[1.8rem] lg:text-3xl text-neutral-300 hover:text-primary hover:underline hover:underline-offset-2 font-bold cursor-pointer transition-all leading-snug mt-2">
               {article?.title}
             </h1>
           </Link>
