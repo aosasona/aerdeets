@@ -14,12 +14,22 @@
   -webkit-appearance: none !important;
   scroll-behavior: smooth !important;
 }
-
 body,
 html {
   font-family: "Saira Semi Condensed", "Poppins", sans-serif;
   background-color: var(--dark);
   color: var(--secondary);
+}
+::-webkit-scrollbar {
+  background-color: #101010;
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary) !important;
+  cursor: pointer;
+}
+::-moz-range-track {
+  background-color: #101010;
 }
 h1 {
   font-family: "Space Grotesk", "Poppins", sans-serif;

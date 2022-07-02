@@ -110,12 +110,12 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
 
         {/* SIDEBAR */}
         <section className="lg:col-span-4">
-          <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold">
+          <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold border-l-4 border-l-primary px-3 py-1">
             More From Aerdeets
           </h1>
 
           {/* RECOMMENDED */}
-          <div className="grid grid-cols-1 gap-1 lg:gap-2 mt-4">
+          <div className="grid grid-cols-1 gap-1 lg:gap-2 mt-3 lg:mt-4">
             {recommended.map((article: IArticle, index: number) => (
               <RecommendedCard article={article} key={index} />
             ))}
