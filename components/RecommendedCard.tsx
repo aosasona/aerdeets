@@ -9,11 +9,11 @@ interface Props {
   article: IArticle;
 }
 
-const FeaturedCard: FC<Props> = ({ article }) => {
+const RecommendedCard: FC<Props> = ({ article }) => {
   const router = useRouter();
   return (
     <div
-      className="w-full lg:w-2/6 mx-auto grid grid-cols-12 items-center cursor-pointer gap-x-4 lg:gap-x-3 pt-4 pb-10 px-1"
+      className="w-full mx-auto grid grid-cols-12 items-center cursor-pointer gap-x-4 lg:gap-x-3 py-1 px-1"
       onClick={() => router.push(`/${article?.slug}`)}
     >
       <img
@@ -24,10 +24,10 @@ const FeaturedCard: FC<Props> = ({ article }) => {
       <div className="col-span-8 h-full flex flex-col items-start justify-evenly gap-y-1 py-1">
         <h2 className="font-semibold text-left">{article?.title}</h2>
 
-        <div className="flex items-center gap-x-2 text-left">
+        <div className="flex flex-col items-start gap-y-1 text-left">
           {article?.category && (
             <Link href={`/category/${article?.category?.slug}`}>
-              <div className="w-max bg-rose-600 hover:bg-secondary text-neutral-100 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
+              <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
                 {article?.category?.name}
               </div>
             </Link>
@@ -43,4 +43,4 @@ const FeaturedCard: FC<Props> = ({ article }) => {
   );
 };
 
-export default FeaturedCard;
+export default RecommendedCard;

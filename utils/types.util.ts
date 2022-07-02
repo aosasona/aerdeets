@@ -26,5 +26,6 @@ export interface IArticle {
     url: string;
   };
   featured: boolean;
+  keywords?: string;
   createdAt: string;
 }

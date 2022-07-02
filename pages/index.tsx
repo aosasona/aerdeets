@@ -131,13 +131,9 @@ export async function getStaticProps() {
       articles(orderBy: createdAt_DESC, stage: PUBLISHED) {
         title
         slug
-        description
         category {
           name
           slug
-        }
-        content {
-          html
         }
         image {
           url

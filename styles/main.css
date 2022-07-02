@@ -33,6 +33,11 @@ a:hover {
   color: var(--primary);
   text-decoration: underline;
 }
+.article-body {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
 .fixed-center {
   position: fixed;
   top: 50%;
