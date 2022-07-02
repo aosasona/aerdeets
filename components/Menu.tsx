@@ -43,9 +43,15 @@ const Menu: FC<Props> = ({ onClose }) => {
                 placeholder="What are you looking for?"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                required
+                minLength={3}
                 className="w-full bg-neutral-900 text-base text-primary focus:outline-none placeholder-neutral-700 rounded-none px-3"
               />
-              <button className="bg-primary text-neutral-900 hover:bg-secondary focus:bg-secondary p-3 transition-all">
+              <button
+                name="search"
+                type="submit"
+                className="bg-primary text-neutral-900 hover:bg-secondary focus:bg-secondary p-3 transition-all"
+              >
                 <FiSearch size={20} />
               </button>
             </form>

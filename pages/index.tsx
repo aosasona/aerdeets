@@ -24,9 +24,11 @@ const Home: NextPage<any> = ({ articles, featured }) => {
   const { dispatch } = useContext(GlobalContext);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(
-    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1
-  );
+
+  // TODO: Pagination Component
+
+  const totalPages =
+    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1;
 
   // Get current page articles
   const currentArticles = articles.slice(

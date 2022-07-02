@@ -23,9 +23,9 @@ interface Props {
 const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(
-    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1
-  );
+
+  const totalPages =
+    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1;
 
   // Get current page articles
   const currentArticles = articles.slice(
@@ -48,7 +48,7 @@ const Category: NextPage<Props> = ({ articles, featured, category_name }) => {
       <Back>Home</Back>
 
       {/* FEATURED */}
-      {featured.length > 0 && (
+      {featured?.length > 0 && (
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -178,7 +178,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       articles,
-      featured,
+      featured: featured,
       category_name:
         category.split("-").join(" ").charAt(0).toUpperCase() +
         category.split("-").join(" ").slice(1),

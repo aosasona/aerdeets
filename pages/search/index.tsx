@@ -134,8 +134,7 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
             "No search query"
           ) : (
             <>
-              {" "}
-              No results for
+              No results for{" "}
               <span className="text-primary underline underline-offset-2">
                 {searchQuery}
               </span>
