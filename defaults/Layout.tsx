@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import type { FC, ReactNode } from "react";
-import Meta from "./Meta";
+import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenuAlt3 } from "react-icons/hi";
+import Meta from "./Meta";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ interface Props {
 
 const Layout: FC<Props> = ({ children, title, desc, keywords, image }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const onClose = () => {
     setIsOpen(false);
@@ -27,7 +29,10 @@ const Layout: FC<Props> = ({ children, title, desc, keywords, image }) => {
       <Meta title={title} desc={desc} keywords={keywords} image={image} />
       <nav className="fixed top-0 w-screen border-b-[2px] border-b-[#121212] z-[99]">
         <div className="w-full flex items-center justify-between bg-black px-5 py-5 lg:px-8 lg:py-5">
-          <div className="flex items-center gap-x-2 lg:gap-x-3">
+          <div
+            className="flex items-center gap-x-2 lg:gap-x-3 cursor-pointer"
+            onClick={() => router.push("/")}
+          >
             <img src="/img/logo_green.svg" alt="logo" className="h-6 lg:h-8" />
             <h2 className="text-2xl lg:text-3xl font-medium">aerdeets</h2>
           </div>

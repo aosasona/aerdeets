@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { gql } from "graphql-request";
@@ -7,12 +7,13 @@ import Layout from "@/defaults/Layout";
 import Link from "next/link";
 import graphqlClient from "@/utils/graphql.util";
 import { IArticle } from "@/utils/types.util";
-import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronLeft, FiShare } from "react-icons/fi";
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 import parse from "html-react-parser";
 import FeaturedCard from "@/components/FeaturedCard";
 import RecommendedCard from "@/components/RecommendedCard";
+import ShareBubble from "@/components/ShareBubble";
 
 interface Props {
   article: IArticle;
@@ -21,6 +22,9 @@ interface Props {
 
 const Article: NextPage<Props> = ({ article, recommended }) => {
   const router = useRouter();
+
+  const [share, setShare] = useState<boolean>(false);
+
   return (
     <Layout
       title={article?.title}
@@ -40,19 +44,31 @@ const Article: NextPage<Props> = ({ article, recommended }) => {
           </button>
 
           {/* CATEGORY AND DATE */}
-          <div className="flex items-center gap-3 my-6">
-            {article?.category && (
-              <Link href={`/category/${article?.category?.slug}`}>
-                <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
-                  {article?.category?.name}
-                </div>
-              </Link>
-            )}
-            <Moment
-              date={article?.createdAt}
-              format="D MMMM YYYY"
-              className="text-neutral-600 text-xs font-semibold lg:text-sm"
-            />
+          <div className="flex items-center justify-between my-5">
+            <div className="flex items-center gap-3">
+              {article?.category && (
+                <Link href={`/category/${article?.category?.slug}`}>
+                  <div className="w-max bg-primary hover:bg-secondary text-neutral-900 text-xs font-semibold uppercase -skew-x-6 cursor-pointer transition-all px-2 py-[2px]">
+                    {article?.category?.name}
+                  </div>
+                </Link>
+              )}
+              <Moment
+                date={article?.createdAt}
+                format="D MMMM YYYY"
+                className="text-neutral-600 text-xs font-semibold lg:text-sm"
+              />
+            </div>
+
+            <div className="h-max relative">
+              <button
+                onClick={() => setShare(!share)}
+                className="text-neutral-300 hover:text-primary transition-all p-2"
+              >
+                <FiShare size={16} />
+              </button>
+              <ShareBubble article={article} visible={share} />
+            </div>
           </div>
 
           {/* TITLE */}

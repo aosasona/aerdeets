@@ -19,6 +19,7 @@
       "@/components/*": ["components/*"],
       "@/context/*": ["context/*"],
       "@/defaults/*": ["defaults/*"],
+      "@/config/*": ["config/*"],
       "@/utils/*": ["utils/*"]
     }
   },
