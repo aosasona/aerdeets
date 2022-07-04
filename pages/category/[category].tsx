@@ -187,6 +187,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         category.split("-").join(" ").charAt(0).toUpperCase() +
         category.split("-").join(" ").slice(1),
     },
+
+    revalidate: 10,
   };
 };
 

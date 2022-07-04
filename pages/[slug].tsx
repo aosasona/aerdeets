@@ -217,6 +217,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       article: data?.article,
       recommended: recommendedData?.articles,
     },
+    revalidate: 10,
   };
 };
 
