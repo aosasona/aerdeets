@@ -7,7 +7,7 @@ import Layout from "@/defaults/Layout";
 import Link from "next/link";
 import graphqlClient from "@/utils/graphql.util";
 import { IArticle } from "@/utils/types.util";
-import { FiChevronLeft, FiShare } from "react-icons/fi";
+import { FiShare } from "react-icons/fi";
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 import parse from "html-react-parser";
@@ -103,7 +103,7 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
             className="w-full aspect-video object-cover rounded-xl"
           />
 
-          <div className="article-body text-neutral-300 mt-4">
+          <div className="article-body text-neutral-300 whitespace-pre-line mt-4">
             {parse(article?.content?.html || "")}
           </div>
         </section>

@@ -19,6 +19,7 @@ html {
   font-family: "Saira Semi Condensed", "Poppins", sans-serif;
   background-color: var(--dark);
   color: var(--secondary);
+  white-space: pre;
 }
 ::-webkit-scrollbar {
   background-color: #101010;
@@ -48,19 +49,28 @@ pre {
   max-width: 100%;
   overflow-x: auto;
   background: #121212;
-  color: rgba(120, 120, 120, 0.9);
+  color: rgba(140, 140, 140, 0.9);
   padding: 1rem;
   border-radius: 0.5rem;
   font-size: 0.85rem;
   font-family: monospace;
 }
+pre > code {
+  background: transparent !important;
+  color: inherit;
+  padding: 0;
+  border: 0;
+}
 code {
-  font-size: 0.85rem;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 0.75rem;
   font-family: monospace;
-  background: #121212;
-  color: rgba(130, 130, 130, 0.9);
-  padding: 0.3rem;
+  background: #202020;
+  color: rgba(200, 200, 200, 0.9);
+  padding: 0.2rem 0.5rem;
   border-radius: 0.25rem;
+  margin-inline: 0.1rem;
 }
 .article-body {
   font-size: 16px;
@@ -69,10 +79,12 @@ code {
   white-space: pre-line !important;
 }
 .article-body img {
+  /* width: 100%; */
   max-width: 100%;
   height: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-inline: auto;
 }
 .article-body p {
   margin-top: 0.7rem;
@@ -86,6 +98,8 @@ code {
 }
 .article-body a {
   color: var(--primary) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .article-body li {
   list-style-type: disc !important;
