@@ -23,6 +23,7 @@ html {
 ::-webkit-scrollbar {
   background-color: #101010;
   width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary) !important;
@@ -43,10 +44,70 @@ a:hover {
   color: var(--primary);
   text-decoration: underline;
 }
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  background: #121212;
+  color: rgba(120, 120, 120, 0.9);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-family: monospace;
+}
+code {
+  font-size: 0.85rem;
+  font-family: monospace;
+  background: #121212;
+  color: rgba(130, 130, 130, 0.9);
+  padding: 0.3rem;
+  border-radius: 0.25rem;
+}
 .article-body {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
+  white-space: pre-line !important;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.article-body p {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.article-body ul,
+.article-body ol {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  padding-inline: 2rem;
+}
+
+.article-body li {
+  list-style-type: disc !important;
+}
+.article-body h2 {
+  font-family: "Space Grotesk", "Poppins", sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--primary);
+}
+.article-body h3 {
+  font-family: "Space Grotesk", "Poppins", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--primary);
+}
+.article-body h4 {
+  font-family: "Space Grotesk", "Poppins", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--primary);
 }
 .fixed-center {
   position: fixed;
@@ -71,6 +132,7 @@ a:hover {
   animation: 1200ms bubble ease-in-out infinite alternate;
   border-radius: 50%;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
