@@ -14,6 +14,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import FeaturedCard from "@/components/FeaturedCard";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { allQuery } from "@/config/query.config";
 
 interface Props {
   articles: IArticle[];
@@ -128,27 +129,7 @@ const Home: NextPage<any> = ({ articles, featured }) => {
 };
 
 export async function getStaticProps() {
-  const query = gql`
-    {
-      articles(orderBy: createdAt_DESC, stage: PUBLISHED) {
-        title
-        slug
-        category {
-          name
-          slug
-        }
-        description
-        content {
-          text
-        }
-        image {
-          url
-        }
-        featured
-        createdAt
-      }
-    }
-  `;
+  const query = allQuery;
   const data = await graphqlClient.request(query);
 
   let featured: IArticle[] = [];

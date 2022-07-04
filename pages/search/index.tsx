@@ -1,36 +1,44 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import type {
-  NextPage,
-  GetServerSideProps,
-  GetServerSidePropsContext,
-} from "next";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { gql } from "graphql-request";
-import Link from "next/link";
 import graphqlClient from "@/utils/graphql.util";
+import { GlobalContext } from "@/context/GlobalContext";
 import { IArticle } from "@/utils/types.util";
 import { PAGE_LIMIT } from "config/article.config";
 import Layout from "@/defaults/Layout";
 import Article from "@/components/Article";
 import { FiChevronLeft, FiChevronRight, FiSearch } from "react-icons/fi";
 import Back from "@/components/Back";
+import { allQuery } from "@/config/query.config";
+import Loader from "@/components/Loader";
 
-interface Props {
-  articles: IArticle[];
-  searchQuery: string;
+// interface Props {
+//   articles: IArticle[];
+//   searchQuery: string;
+// }
+
+interface IArticleWithText extends IArticle {
+  content: {
+    text: string;
+    html: string;
+  };
 }
 
-const Search: NextPage<Props> = ({ articles, searchQuery }) => {
+const Search: NextPage = () => {
   const router = useRouter();
-
-  // TODO: USE CACHE DATA FROM CONTEXT IF AVAILABLE
+  const { query: urlQuery } = router;
+  const { state, dispatch } = useContext(GlobalContext);
+  // Search query
+  const searchQuery = (urlQuery?.q as string) || "";
 
   const [query, setQuery] = useState<string>("");
+  const [articles, setArticles] = useState<IArticleWithText[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(
-    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1
-  );
+  const [loading, setLoading] = useState<boolean>(true);
+  const totalPages =
+    articles.length > 0 ? Math.ceil(articles.length / PAGE_LIMIT) : 1;
 
   // Get current page articles
   const currentArticles = articles.slice(
@@ -48,18 +56,95 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
     setCurrentPage(currentPage + 1);
   };
 
+  // Form handler
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push(`/search?q=${query}`);
   };
+
+  // Set query on mount
+  useEffect(() => {
+    setQuery(searchQuery);
+  }, [searchQuery]);
+
+  // Search on mount
+  useEffect(() => {
+    // Search functionality
+    (async () => {
+      try {
+        setLoading(true);
+
+        // If there is context data, use it
+        if (state.articles.length > 0) {
+          // Find matching articles
+          const matchingArticles = state.articles.filter(
+            (article: IArticleWithText) => {
+              return (
+                article.title.toLowerCase().includes(query.toLowerCase()) ||
+                article.content.text.toLowerCase().includes(query.toLowerCase())
+              );
+            }
+          );
+
+          // Set articles
+          setArticles(matchingArticles);
+          setLoading(false);
+        } else {
+          const graphQuery = gql`
+            {
+              articles(where: { _search: "${searchQuery}" }) {
+                title
+                slug
+                description
+                content {
+                  text
+                }
+                category {
+                  name
+                  slug
+                }
+
+                image {
+                  url
+                }
+                createdAt
+              }
+            }
+          `;
+
+          // Make all queries
+          const data = await Promise.all([
+            graphqlClient.request(graphQuery),
+            graphqlClient.request(allQuery),
+          ]);
+
+          const result = data[0]?.articles || [];
+          const allArticles = data[1]?.articles || [];
+
+          // Prioritize search results
+          setArticles(result);
+          setLoading(false);
+
+          // Context Data
+          dispatch({
+            type: "SET_ARTICLES",
+            payload: allArticles,
+          });
+        }
+      } catch (err: unknown) {
+        setLoading(false);
+        setArticles([]);
+      }
+    })();
+  }, [dispatch, query, searchQuery, state.articles]);
   return (
     <Layout title={`Search - ${searchQuery || ""}`}>
       <h1 className="text-3xl font-bold text-neutral-700">Search</h1>
-      {searchQuery && (
+      {query && (
         <p className="text-xs text-neutral-400 px-1 my-1">
           Showing results for{" "}
           <span className="text-primary underline underline-offset-2">
-            {searchQuery}
+            {query}
           </span>
         </p>
       )}
@@ -83,6 +168,13 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
 
       {/* BACK */}
       <Back>Back</Back>
+
+      {/* LOADER */}
+      {loading && (
+        <div className="flex justify-center items-center h-[4vh] mb-6">
+          <Loader />
+        </div>
+      )}
 
       {/* SEARCH RESULTS */}
       {articles?.length > 0 ? (
@@ -138,7 +230,7 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
             <>
               No results for{" "}
               <span className="text-primary underline underline-offset-2">
-                {searchQuery}
+                {query}
               </span>
             </>
           )}
@@ -146,61 +238,6 @@ const Search: NextPage<Props> = ({ articles, searchQuery }) => {
       )}
     </Layout>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (
-  ctx: GetServerSidePropsContext
-) => {
-  // Cache control
-  ctx.res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
-
-  const { query } = ctx;
-
-  const queryString = query?.q as string;
-
-  // IF there is no query
-  if (!queryString) {
-    return {
-      props: {
-        articles: [],
-        searchQuery: "",
-      },
-    };
-  }
-
-  const graphQuery = gql`
-    {
-      articles(where: { _search: "${queryString}" }) {
-        title
-        slug
-        description
-        content {
-          text
-        }
-        category {
-          name
-          slug
-        }
-
-        image {
-          url
-        }
-        createdAt
-      }
-    }
-  `;
-
-  const { articles } = await graphqlClient.request(graphQuery);
-
-  return {
-    props: {
-      articles,
-      searchQuery: queryString,
-    },
-  };
 };
 
 export default Search;
