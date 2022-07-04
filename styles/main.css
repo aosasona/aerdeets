@@ -19,7 +19,7 @@ html {
   font-family: "Saira Semi Condensed", "Poppins", sans-serif;
   background-color: var(--dark);
   color: var(--secondary);
-  white-space: pre;
+  white-space: pre-line;
 }
 ::-webkit-scrollbar {
   background-color: #101010;
