@@ -17,7 +17,7 @@ const Article: FC<Props> = ({ article }) => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="flex flex-col gap-4 py-1"
+        className="flex flex-col gap-4 transition-all py-1"
       >
         <img
           src={article?.image?.url || "/img/default.jpg"}
@@ -40,10 +40,22 @@ const Article: FC<Props> = ({ article }) => {
             />
           </div>
           <Link href={`/${article?.slug}`}>
-            <h1 className="text-[1.8rem] lg:text-3xl text-neutral-300 hover:text-primary hover:underline hover:underline-offset-2 font-bold cursor-pointer transition-all leading-snug mt-2">
+            <h1 className="text-[1.8rem] lg:text-3xl text-neutral-300 hover:text-primary hover:underline hover:underline-offset-2 hover:-skew-x-6 transition-all font-bold cursor-pointer leading-tight lg:leading-snug mt-2">
               {article?.title}
             </h1>
           </Link>
+          <h4 className="text-xs font-medium text-neutral-500 mt-1 lg:mt-2">
+            {article?.description?.slice(0, 100) ||
+              article?.content?.text?.slice(0, 100)}
+            {(article?.description && article?.description?.length > 100) ||
+            (article?.content?.text && article?.content?.text?.length > 100) ? (
+              <>
+                ... <Link href={`/${article?.slug}`}>read more</Link>
+              </>
+            ) : (
+              ""
+            )}
+          </h4>
         </div>
       </motion.div>
     </AnimatePresence>

@@ -21,6 +21,7 @@ export interface IArticle {
   category: ICategories;
   content: {
     html: string;
+    text?: string;
   };
   image: {
     url: string;

@@ -159,6 +159,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
           name
           slug
         }
+        description
+        content {
+          text
+        }
         image {
           url
         }

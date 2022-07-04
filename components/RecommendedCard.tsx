@@ -13,7 +13,7 @@ const RecommendedCard: FC<Props> = ({ article }) => {
   const router = useRouter();
   return (
     <div
-      className="w-full mx-auto grid grid-cols-12 items-center cursor-pointer gap-x-4 lg:gap-x-3 py-1 px-1"
+      className="w-full mx-auto grid grid-cols-12 items-center cursor-pointer hover:bg-primary hover:bg-opacity-10 transition-all rounded-xl gap-x-4 lg:gap-x-3 py-1 px-1"
       onClick={() => router.push(`/${article?.slug}`)}
     >
       <img

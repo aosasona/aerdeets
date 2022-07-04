@@ -176,10 +176,15 @@ export const getServerSideProps: GetServerSideProps = async (
       articles(where: { _search: "${queryString}" }) {
         title
         slug
+        description
+        content {
+          text
+        }
         category {
           name
           slug
         }
+
         image {
           url
         }

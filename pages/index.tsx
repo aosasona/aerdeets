@@ -137,6 +137,10 @@ export async function getStaticProps() {
           name
           slug
         }
+        description
+        content {
+          text
+        }
         image {
           url
         }

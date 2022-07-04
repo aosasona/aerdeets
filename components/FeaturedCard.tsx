@@ -22,7 +22,9 @@ const FeaturedCard: FC<Props> = ({ article }) => {
         className="w-full col-span-4 aspect-square object-cover rounded-xl"
       />
       <div className="col-span-8 h-full flex flex-col items-start justify-evenly gap-y-1 py-1">
-        <h2 className="font-semibold text-left">{article?.title}</h2>
+        <h2 className="font-semibold text-left hover:text-primary hover:underline hover:underline-offset-4 hover:-skew-x-6 transition-all">
+          {article?.title}
+        </h2>
 
         <div className="flex items-center gap-x-2 text-left">
           {article?.category && (
