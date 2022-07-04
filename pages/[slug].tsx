@@ -112,7 +112,8 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
         <section className="lg:col-span-4">
           {recommended?.length > 0 && (
             <>
-              <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold border-l-4 border-l-primary px-3 py-1">
+              {/* border-l-4 border-l-primary px-3 */}
+              <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold py-1">
                 More From Aerdeets
               </h1>
 
