@@ -9,6 +9,7 @@ import graphqlClient from "@/utils/graphql.util";
 import { IArticle } from "@/utils/types.util";
 import { FiShare } from "react-icons/fi";
 import { useRouter } from "next/router";
+import { DiscussionEmbed } from "disqus-react";
 import Moment from "react-moment";
 import parse from "html-react-parser";
 import RecommendedCard from "@/components/RecommendedCard";
@@ -24,6 +25,16 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
   const router = useRouter();
 
   const [share, setShare] = useState<boolean>(false);
+
+  // Disqus config
+  const disqus = {
+    shortname: "aerdeets",
+    config: {
+      url: `https://aerdeets.com${router.asPath}`,
+      identifier: article?.slug,
+      title: article?.title,
+    },
+  };
 
   // Disable scrolling on body when share is open
   useEffect(() => {
@@ -41,7 +52,7 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
       keywords={article?.keywords || ""}
       image={article?.image?.url || "/img/default.jpg"}
     >
-      <main className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6">
+      <main className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-8">
         {/* CONTENT */}
         <section className="lg:col-span-8">
           <Back>Back</Back>
@@ -109,22 +120,29 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
         </section>
 
         {/* SIDEBAR */}
-        <section className="lg:col-span-4">
-          {recommended?.length > 0 && (
-            <>
-              {/* border-l-4 border-l-primary px-3 */}
-              <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold py-1">
-                More From Aerdeets
-              </h1>
+        <section className="lg:col-span-4 sticky-el">
+          <>
+            {recommended?.length > 0 && (
+              <>
+                {/* border-l-4 border-l-primary px-3 */}
+                <h1 className="text-2xl lg:text-3xl text-neutral-700 font-bold py-1">
+                  More From Aerdeets
+                </h1>
 
-              {/* RECOMMENDED */}
-              <div className="grid grid-cols-1 gap-1 lg:gap-2 mt-3 lg:mt-4">
-                {recommended.map((article: IArticle, index: number) => (
-                  <RecommendedCard article={article} key={index} />
-                ))}
-              </div>
-            </>
-          )}
+                {/* RECOMMENDED */}
+                <div className="grid grid-cols-1 gap-1 lg:gap-2 mt-3 lg:mt-4">
+                  {recommended.map((article: IArticle, index: number) => (
+                    <RecommendedCard article={article} key={index} />
+                  ))}
+                </div>
+              </>
+            )}
+            {/* DISQUS */}
+            <DiscussionEmbed
+              shortname={disqus.shortname}
+              config={disqus.config}
+            />
+          </>
         </section>
       </main>
     </Layout>

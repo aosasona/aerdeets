@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { FC, ReactNode } from "react";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
-import { HiMenuAlt3 } from "react-icons/hi";
+import { HiMenuAlt3, HiOutlineChevronUp } from "react-icons/hi";
 import Meta from "./Meta";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
@@ -17,12 +17,38 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children, title, desc, keywords, image }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [scroll, setScroll] = useState<boolean>(false);
 
   const onClose = () => {
     setIsOpen(false);
   };
+
+  // Top ref
+  const topRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top
+  const scrollToTop = () => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +69,10 @@ const Layout: FC<Props> = ({ children, title, desc, keywords, image }) => {
           />
         </div>
       </nav>
-      <main className="w-[92%] lg:w-4/5 mx-auto mt-[11vh] lg:mt-[11vh]">
+      <main
+        className="w-[92%] lg:w-4/5 mx-auto mt-[11vh] lg:mt-[11vh]"
+        ref={topRef}
+      >
         {children}
         <Footer />
       </main>
@@ -84,14 +113,30 @@ const Layout: FC<Props> = ({ children, title, desc, keywords, image }) => {
       </AnimatePresence>
 
       {/* FLOATING */}
-      <button
-        name="floating-button"
-        type="button"
-        className="fixed bg-primary bottom-5 right-5 drop-shadow-md p-4 z-[99]"
-        onClick={() => setIsOpen(true)}
-      >
-        <HiMenuAlt3 size={24} className="text-neutral-900" />
-      </button>
+      <div className="fixed bottom-5 right-5 z-[99] flex flex-col">
+        <AnimatePresence>
+          {scroll && (
+            <motion.button
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="flex items-center justify-center bg-secondary text-dark hover:bg-opacity-40 hover:text-secondary transition-all p-4"
+              onClick={scrollToTop}
+            >
+              <HiOutlineChevronUp size={24} />
+            </motion.button>
+          )}
+        </AnimatePresence>
+        <button
+          name="floating-button"
+          type="button"
+          className="bg-primary drop-shadow-md p-4"
+          onClick={() => setIsOpen(true)}
+        >
+          <HiMenuAlt3 size={24} className="text-neutral-900" />
+        </button>
+      </div>
     </>
   );
 };

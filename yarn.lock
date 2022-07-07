@@ -188,6 +188,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-sticky-el@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-sticky-el/-/react-sticky-el-1.0.3.tgz#88fcd56cd0b501e06fe0b8cbcdccb9af375f4e56"
+  integrity sha512-GE4Ry9EmS0RTn2T85uYbcsqvffPbJGhFNkcWWMcEs6ftjrK5Fn6TT6RtgmXpab5ly3c0VLUT7ibh/fD6nwdx4Q==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@18.0.9":
   version "18.0.9"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
@@ -615,6 +622,11 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
+
+disqus-react@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.1.3.tgz#e9701c8e3e7062b4f0ce2f6822dc0bb24a25573f"
+  integrity sha512-DwKdmbHTMPyhBECBeRYAPNcIqZNKMvsRiyVdF89BdmFCbZpWb7+xMj/lvAuckBSx1ilOHpTKYYyW11uodaJ6ig==
 
 dlv@^1.1.3:
   version "1.1.3"
@@ -1846,11 +1858,6 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prismjs@^1.28.0:
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.28.0.tgz#0d8f561fa0f7cf6ebca901747828b149147044b6"
-  integrity sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==
-
 prop-types@^15.5.8, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
@@ -1926,6 +1933,11 @@ react-share@^4.4.0:
   dependencies:
     classnames "^2.2.5"
     jsonp "^0.2.1"
+
+react-sticky-el@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-2.0.9.tgz#8cfd17f073c8c116d7c15d2a23156b5e8e372bd9"
+  integrity sha512-JFjFWlaB7gn5bszZlRQ/VKxK3zHiViJdn0EhQ/6WImun5Xbx3OMUX2rirr0QLSEo27dwvoSE4HkIFr30QAScfg==
 
 react@18.1.0:
   version "18.1.0"

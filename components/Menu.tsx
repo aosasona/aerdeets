@@ -55,6 +55,10 @@ const Menu: FC<Props> = ({ onClose }) => {
                 <FiSearch size={20} />
               </button>
             </form>
+            {/* HOME */}
+            <p className="text-neutral-300 hover:text-primary hover:underline hover:underline-offset-4 transition-all px-3 lg:px-4">
+              <Link href="/">Home</Link>
+            </p>
             {state.categories.map((category: ICategories, index: number) => (
               <div key={index} className="px-3 lg:px-4">
                 <p className="text-neutral-300 hover:text-primary hover:underline hover:underline-offset-4 transition-all">
