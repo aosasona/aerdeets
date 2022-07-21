@@ -139,9 +139,9 @@ const Search: NextPage = () => {
   }, [dispatch, query, searchQuery, state.articles]);
   return (
     <Layout title={`Search - ${searchQuery || ""}`}>
-      <h1 className="text-3xl font-bold text-neutral-700">Search</h1>
+      <h1 className="text-4xl font-bold text-neutral-700">Search</h1>
       {query && (
-        <p className="text-xs text-neutral-400 px-1 my-1">
+        <p className="text-xs text-neutral-400 px-1 my-[6px]">
           Showing results for{" "}
           <span className="text-primary underline underline-offset-2">
             {query}
