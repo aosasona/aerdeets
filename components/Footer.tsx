@@ -45,12 +45,12 @@ const Footer: FC = () => {
 
   return (
     <>
-      <div className="w-full lg:w-3/6 mx-auto bg-primary pt-5 pb-6 px-5 mt-8">
+      <div className="w-full lg:w-3/6 mx-auto bg-primary pt-6 pb-7 px-5 lg:px-6 mt-8">
         <h1 className="text-dark font-bold text-3xl lg:text-4xl w-5/6">
           Subscribe To Our Newsletter
         </h1>
         <div>
-          <form onSubmit={handleSubmit} className="w-full flex my-4">
+          <form onSubmit={handleSubmit} className="w-full flex my-6 lg:my-7">
             <input
               type="email"
               name="email"
