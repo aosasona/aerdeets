@@ -144,7 +144,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { category: category?.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 // Get articles

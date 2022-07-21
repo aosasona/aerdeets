@@ -154,30 +154,6 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-// Get Paths
-export const getStaticPaths: GetStaticPaths = async () => {
-  const query = gql`
-    {
-      articles(orderBy: createdAt_DESC) {
-        id
-        slug
-      }
-    }
-  `;
-
-  interface IArticlePaths {
-    slug: string;
-  }
-
-  const { articles } = await graphqlClient.request(query);
-
-  const paths = articles.map((article: IArticlePaths) => ({
-    params: { slug: article?.slug },
-  }));
-
-  return { paths, fallback: "blocking" };
-};
-
 // Get articles
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx?.params as IParams;
@@ -237,6 +213,30 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     },
     revalidate: 10,
   };
+};
+
+// Get Paths
+export const getStaticPaths: GetStaticPaths = async () => {
+  const query = gql`
+    {
+      articles(orderBy: createdAt_DESC) {
+        id
+        slug
+      }
+    }
+  `;
+
+  interface IArticlePaths {
+    slug: string;
+  }
+
+  const { articles } = await graphqlClient.request(query);
+
+  const paths = articles.map((article: IArticlePaths) => ({
+    params: { slug: article?.slug },
+  }));
+
+  return { paths, fallback: "blocking" };
 };
 
 export default ArticlePage;
