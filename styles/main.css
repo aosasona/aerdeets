@@ -51,9 +51,11 @@ pre {
   background: #121212;
   color: rgba(140, 140, 140, 0.9);
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   font-size: 0.85rem;
   font-family: monospace;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 pre > code {
   background: transparent !important;
@@ -82,13 +84,13 @@ code {
   /* width: 100%; */
   max-width: 100%;
   height: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.1rem;
+  margin-bottom: 1.1rem;
   margin-inline: auto;
 }
 .article-body p {
-  margin-top: 0.7rem;
-  margin-bottom: 0.7rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 .article-body ul,
 .article-body ol {
@@ -104,12 +106,14 @@ code {
 .article-body li {
   list-style-type: disc !important;
 }
+
 .article-body h2 {
   font-family: "Space Grotesk", "Poppins", sans-serif;
   font-size: 2.5rem;
   line-height: 1.2;
   font-weight: 800;
   color: var(--primary);
+  margin-top: 0.9rem;
 }
 .article-body h3 {
   font-family: "Space Grotesk", "Poppins", sans-serif;
@@ -117,6 +121,7 @@ code {
   line-height: 1.2;
   font-weight: 800;
   color: var(--primary);
+  margin-top: 0.9rem;
 }
 .article-body h4 {
   font-family: "Space Grotesk", "Poppins", sans-serif;
@@ -124,6 +129,16 @@ code {
   line-height: 1.2;
   font-weight: 800;
   color: var(--primary);
+  margin-top: 0.9rem;
+}
+
+.article-body h5 {
+  font-family: "Space Grotesk", "Poppins", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--primary);
+  margin-top: 1rem;
 }
 .fixed-center {
   position: fixed;

@@ -103,7 +103,7 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
           </div>
 
           {/* TITLE */}
-          <h1 className="text-4xl lg:text-5xl font-bold text-secondary mb-5">
+          <h1 className="text-4xl lg:text-5xl font-bold text-secondary">
             {article?.title}
           </h1>
 
@@ -111,10 +111,10 @@ const ArticlePage: NextPage<Props> = ({ article, recommended }) => {
           <img
             src={article?.image?.url || "/img/default.jpg"}
             alt={article?.title || ""}
-            className="w-full aspect-video object-cover rounded-xl"
+            className="w-full aspect-video object-cover rounded-xl my-5"
           />
 
-          <div className="article-body text-neutral-300 whitespace-pre-line mt-4">
+          <div className="article-body text-neutral-300 whitespace-pre-line">
             {parse(article?.content?.html || "")}
           </div>
         </section>
