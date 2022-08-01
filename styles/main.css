@@ -106,7 +106,14 @@ code {
 .article-body li {
   list-style-type: disc !important;
 }
-
+.article-body h1 {
+  font-family: "Space Grotesk", "Poppins", sans-serif;
+  font-size: 2.75rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--primary);
+  margin-top: 0.9rem;
+}
 .article-body h2 {
   font-family: "Space Grotesk", "Poppins", sans-serif;
   font-size: 2.5rem;

@@ -12,7 +12,7 @@ const Meta: FunctionComponent<Props> = ({ title, desc, keywords, image }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#121212" />
+      <meta name="theme-color" content="#000" />
       <meta name="description" content={desc} />
       <meta name="keywords" content={keywords} />
 
@@ -28,12 +28,12 @@ const Meta: FunctionComponent<Props> = ({ title, desc, keywords, image }) => {
       <meta property="twitter:description" content={desc} />
       <meta property="twitter:image" content={image} />
 
-      <meta property="og:site_name" content="https://www.aerdeets.com" />
+      <meta property="og:site_name" content="Aerdeets" />
       <meta property="og:site" content="https://www.aerdeets.com" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={desc} />
-      <meta property="og:image" content="https://www.aerdeets.com" />
-      <meta property="og:url" content={image} />
+      <meta property="og:image" content={image} />
+      <meta property="og:url" content="https://www.aerdeets.com" />
       <title>{title}</title>
     </Head>
   );
