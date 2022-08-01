@@ -52,7 +52,7 @@ pre {
   color: rgba(140, 140, 140, 0.9);
   padding: 1rem;
   border-radius: 0.2rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-family: monospace;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -66,11 +66,11 @@ pre > code {
 code {
   max-width: 100%;
   overflow-x: auto;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-family: monospace;
   background: #202020;
   color: rgba(200, 200, 200, 0.9);
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 0.25rem;
   margin-inline: 0.1rem;
 }
